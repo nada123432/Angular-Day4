@@ -31,6 +31,14 @@ export class ProductsComponent implements OnInit {
     this.products = this.productService.getAllproducts();
   }
 
-
+  searchProducts() {
+    if (!this.searchTerm) {
+      return this.products;
+    }
+    
+    return this.products.filter(product => 
+      product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
 
 }
